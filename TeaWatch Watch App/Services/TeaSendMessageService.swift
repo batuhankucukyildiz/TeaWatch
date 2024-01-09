@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+
+protocol TeaSendMessageServiceProtocol {
+    func teaSendMessage(id: String, completion: @escaping(Result<TeaResultModel, Error>) -> Void) -> Void
+}
+
+class TeaSendMessageService: TeaSendMessageServiceProtocol {
+    func teaSendMessage(id: String, completion: @escaping (Result<TeaResultModel, Error>) -> Void) {
+        let endpoint = Endpoint.sendFloorData(id: id)
+        NetworkManager.shared.request(endpoint, completion: completion)
+    }
+}

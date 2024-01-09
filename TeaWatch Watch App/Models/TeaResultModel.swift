@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+
+struct TeaResultModel: Decodable {
+    var resultData: String
+}

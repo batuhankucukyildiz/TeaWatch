@@ -7,21 +7,42 @@
 
 import SwiftUI
 
+import SwiftUI
+import WatchConnectivity
+
 struct TeaSendMessageView: View {
+    var id: String
+    var vmService = TeaSendMessageViewModel(service: TeaSendMessageService())
+    @State private var isDetailViewActive = false
+
     var body: some View {
-        Color.black.ignoresSafeArea()
-        VStack {
-            CustomButton(title: "Brew Tea", color: .green) {
+        NavigationStack {
+            ScrollView {
+                Color.black.ignoresSafeArea()
                 
-            }.padding(.bottom)
-            CustomButton(title: "Finish", color: .red) {
-                
-            }.padding(.bottom)
+                VStack {
+                    CustomButton(title: "Brew Tea", color: .green) {
+                        vmService.teaBrew("ready\(id)")
+                    }
+                    .padding(.bottom)
+                   
+                        CustomButton(title: "Detail", color: .orange) {
+                            self.isDetailViewActive = true
+                        }
+                        .padding(.bottom)
+                        .background(NavigationLink("", destination: DetailView(), isActive: $isDetailViewActive).hidden())
+
+                    CustomButton(title: "Finish", color: .red) {
+                        vmService.teaFinish("reset\(id)")
+                    }
+                }
+                .padding(.horizontal)
+            }
         }
-        .padding()
     }
 }
 
+
 #Preview {
-    TeaSendMessageView()
+    TeaSendMessageView(id: "")
 }

@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum NetworkError: Error {
+    case jsonDecoderError
+    case authenticationError
+    case badRequest
+    case networkError
+}
