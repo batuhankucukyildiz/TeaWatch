@@ -11,7 +11,7 @@ import SocketIO
 class Socket {
     let manager: SocketManager
     let socket: SocketIOClient
-
+    
     init() {
         guard let baseURL = URL(string: Constants.baseUrl) else {
             fatalError("Invalid base URL")
@@ -23,22 +23,16 @@ class Socket {
     }
     
     // Refactor
-    func socketFunc() {
-        
+    func socketFunc(completion: @escaping (Result<Double, Error>) -> Void) {
         socket.on("initialCountdownFloorTwo") { data, ack in
             if let secondsRemaining = data[0] as? Double {
-               // Burada secondsRemaining değerini kullanabilirsiniz
-               print("Received secondsRemaining: \(secondsRemaining)")
+                completion(.success(secondsRemaining))
+            } else {
+                let error = NSError(domain: "SocketErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "Data parsing error"])
+                completion(.failure(error))
             }
         }
-        socket.on(clientEvent: .disconnect) { data, ack in
-            print("Socket disconnected")
-        }
-
-        socket.on(clientEvent: .reconnect) { data, ack in
-            print("Socket reconnected")
-        }
-        
         socket.connect()
     }
+
 }
