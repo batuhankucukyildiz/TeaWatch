@@ -8,42 +8,55 @@
 import SwiftUI
 
 struct DetailView: View {
-    @State private var remainingTime = 8400 // 20 dakika = 1200 saniye
+
+    @State private var remainingTime = 8400
     @State private var circularBarTime: CGFloat = 0.5
-    @StateObject var socket = SocketViewModel()
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var countdownFloorTwo: Double = 0 // Yeni eklenen @State özelliği
+    @StateObject var viewModel: SocketViewModel = SocketViewModel()
+
     var body: some View {
         ZStack {
-            Text(formatTime(remainingTime)).fontWeight(.bold)
-            CircularBar(progress: $circularBarTime)
-                .scaleEffect(0.7)
-                .alignmentGuide(HorizontalAlignment.center) { dimension in
-                    dimension[.trailing] / 2 // Yatayda ortalamak için
+            VStack {
+                Text("Countdown: \(Int(viewModel.initialCountdownFloorTwo))")
+                CustomButton(title: "tıkla", color: .green) {
+                    viewModel.socketBegin()
                 }
-                .alignmentGuide(VerticalAlignment.center) { dimension in
-                    dimension[.bottom] / 2 // Dikeyde ortalamak için
-                }
+            }
+          
+            
+//            Text(formatTime(remainingTime)).fontWeight(.bold)
+//            CircularBar(progress: $circularBarTime)
+//                .scaleEffect(0.7)
+//                .alignmentGuide(HorizontalAlignment.center) { dimension in
+//                    dimension[.trailing] / 2 // Yatayda ortalamak için
+//                }
+//                .alignmentGuide(VerticalAlignment.center) { dimension in
+//                    dimension[.bottom] / 2 // Dikeyde ortalamak için
+//                }
         }
         .padding()
-        .onReceive(timer) { _ in
-            if remainingTime > 0 {
-                circularBarTime = CGFloat(remainingTime) / CGFloat(1200)
-                remainingTime -= 1
-            }
+        .onChange(of: viewModel.initialCountdownFloorTwo) {_, newValue in
+            self.remainingTime = Int(newValue)
         }
-    }
+//        .onDisappear {
+//            viewModel.socketDisconnect()
+//            //print("k")
+//        }
 
-    private func formatTime(_ totalSeconds: Int) -> String {
-        let minutes = totalSeconds / 60
-        let seconds = totalSeconds % 60
-        let hours = minutes / 60
-        let remainingMinutes = minutes % 60
-        return String(format: "%02d:%02d:%02d", hours, remainingMinutes, seconds)
+//        .onReceive(socket.$initialCountdownFloorTwo) { newValue in
+//            // Yeni değeri countdownFloorTwo özelliğine atayarak izlemeyi tetikle
+//            self.countdownFloorTwo = newValue
+//        }
     }
-
 }
 
+
+//socket.onCountdownUpdate = { [weak self] data in
+//    DispatchQueue.main.async {
+//        self?.initialCountdownFloorTwo = data
+//        print("Data is --------------------------- \(data)")
+//    }
+//}
 #Preview {
     DetailView()
 }

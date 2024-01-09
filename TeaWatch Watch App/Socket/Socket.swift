@@ -9,30 +9,29 @@ import Foundation
 import SocketIO
 
 class Socket {
-    let manager: SocketManager
+    let manager: SocketManager = SocketManager(socketURL: URL(string: Constants.baseUrl)!, config: [.log(false), .compress])
     let socket: SocketIOClient
     
     init() {
-        guard let baseURL = URL(string: Constants.baseUrl) else {
-            fatalError("Invalid base URL")
-        }
-
-        self.manager = SocketManager(socketURL: baseURL, config: [.log(true), .compress])
         self.socket = manager.defaultSocket
-
+        socket.connect()
     }
-    
     // Refactor
-    func socketFunc(completion: @escaping (Result<Double, Error>) -> Void) {
-        socket.on("initialCountdownFloorTwo") { data, ack in
-            if let secondsRemaining = data[0] as? Double {
-                completion(.success(secondsRemaining))
+    func receiveMessage(completion: @escaping (Result<Double, Error>) -> Void) {
+        socket.on("connectUser") { (data, ack) in
+            if let data = data[0] as? Double {
+                completion(.success(data))
             } else {
                 let error = NSError(domain: "SocketErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "Data parsing error"])
                 completion(.failure(error))
             }
         }
-        socket.connect()
+    }
+
+    
+    // add disconnect method
+    func socketDisconnect() {
+        socket.disconnect()
     }
 
 }
