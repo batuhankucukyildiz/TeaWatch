@@ -26,6 +26,8 @@
 		4553DE382B4D110200282403 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE372B4D110200282403 /* DetailView.swift */; };
 		4553DE3B2B4D32CD00282403 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 4553DE3A2B4D32CD00282403 /* SocketIO */; };
 		4553DE3E2B4D357000282403 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE3D2B4D357000282403 /* Socket.swift */; };
+		4553DE412B4D361A00282403 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE402B4D361A00282403 /* Constants.swift */; };
+		4553DE432B4D43A400282403 /* SocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE422B4D43A400282403 /* SocketViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		4553DE352B4D10C400282403 /* CircularBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBar.swift; sourceTree = "<group>"; };
 		4553DE372B4D110200282403 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		4553DE3D2B4D357000282403 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		4553DE402B4D361A00282403 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4553DE422B4D43A400282403 /* SocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 		453E56D52B4C83FF0065A552 /* TeaWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				4553DE3F2B4D35FC00282403 /* Helper */,
 				4553DE3C2B4D353200282403 /* Socket */,
 				453E56FB2B4C93EA0065A552 /* ViewModels */,
 				453E56F32B4C93540065A552 /* Network */,
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				453E56FC2B4C956D0065A552 /* TeaSendMessageViewModel.swift */,
+				4553DE422B4D43A400282403 /* SocketViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -181,6 +187,14 @@
 				4553DE3D2B4D357000282403 /* Socket.swift */,
 			);
 			path = Socket;
+			sourceTree = "<group>";
+		};
+		4553DE3F2B4D35FC00282403 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4553DE402B4D361A00282403 /* Constants.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +308,7 @@
 				4553DE382B4D110200282403 /* DetailView.swift in Sources */,
 				453E56F82B4C937D0065A552 /* NetworkError.swift in Sources */,
 				453E56D92B4C83FF0065A552 /* ContentView.swift in Sources */,
+				4553DE412B4D361A00282403 /* Constants.swift in Sources */,
 				453E56ED2B4C8CB80065A552 /* TeaList.swift in Sources */,
 				453E56EB2B4C8C770065A552 /* TeaListModel.swift in Sources */,
 				453E56EF2B4C8F3B0065A552 /* TeaSendMessageView.swift in Sources */,
@@ -301,6 +316,7 @@
 				453E56E92B4C8A280065A552 /* CustomButton.swift in Sources */,
 				453E57012B4C969F0065A552 /* TeaResultModel.swift in Sources */,
 				453E56FD2B4C956D0065A552 /* TeaSendMessageViewModel.swift in Sources */,
+				4553DE432B4D43A400282403 /* SocketViewModel.swift in Sources */,
 				453E56FF2B4C95920065A552 /* TeaSendMessageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

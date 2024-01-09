@@ -11,7 +11,10 @@ struct DetailView: View {
     @State private var remainingTime = 1200 // 20 dakika = 1200 saniye
     @State private var circularBarTime: CGFloat = 0.5
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+    let socket = Socket()
+    init() {
+        socket.socketFunc()
+    }
     var body: some View {
         ZStack {
             Text(formatTime(remainingTime)).fontWeight(.bold)

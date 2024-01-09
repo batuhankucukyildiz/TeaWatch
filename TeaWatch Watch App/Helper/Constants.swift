@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Constants {
+    static let baseUrl: String = "http://caysaati.local:3000"
+}

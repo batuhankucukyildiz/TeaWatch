@@ -30,7 +30,7 @@ enum Endpoint {
 
 extension Endpoint: EndpointProtocol {
     var baseUrl: String {
-        return "http://caysaati.local:3000"
+        return Constants.baseUrl
     }
     
     var path: String {
