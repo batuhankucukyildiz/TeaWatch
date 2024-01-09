@@ -24,6 +24,8 @@
 		453E57012B4C969F0065A552 /* TeaResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E57002B4C969F0065A552 /* TeaResultModel.swift */; };
 		4553DE362B4D10C400282403 /* CircularBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE352B4D10C400282403 /* CircularBar.swift */; };
 		4553DE382B4D110200282403 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE372B4D110200282403 /* DetailView.swift */; };
+		4553DE3B2B4D32CD00282403 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 4553DE3A2B4D32CD00282403 /* SocketIO */; };
+		4553DE3E2B4D357000282403 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE3D2B4D357000282403 /* Socket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,7 @@
 		453E57002B4C969F0065A552 /* TeaResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaResultModel.swift; sourceTree = "<group>"; };
 		4553DE352B4D10C400282403 /* CircularBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBar.swift; sourceTree = "<group>"; };
 		4553DE372B4D110200282403 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		4553DE3D2B4D357000282403 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4553DE3B2B4D32CD00282403 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,7 @@
 		453E56D52B4C83FF0065A552 /* TeaWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				4553DE3C2B4D353200282403 /* Socket */,
 				453E56FB2B4C93EA0065A552 /* ViewModels */,
 				453E56F32B4C93540065A552 /* Network */,
 				453E56F22B4C934B0065A552 /* Services */,
@@ -170,6 +175,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		4553DE3C2B4D353200282403 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				4553DE3D2B4D357000282403 /* Socket.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -203,6 +216,9 @@
 			dependencies = (
 			);
 			name = "TeaWatch Watch App";
+			packageProductDependencies = (
+				4553DE3A2B4D32CD00282403 /* SocketIO */,
+			);
 			productName = "TeaWatch Watch App";
 			productReference = 453E56D12B4C83FF0065A552 /* TeaWatch Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -234,6 +250,9 @@
 				Base,
 			);
 			mainGroup = 453E56C42B4C83FF0065A552;
+			packageReferences = (
+				4553DE392B4D32CD00282403 /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			productRefGroup = 453E56CC2B4C83FF0065A552 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -270,6 +289,7 @@
 			files = (
 				4553DE362B4D10C400282403 /* CircularBar.swift in Sources */,
 				453E56FA2B4C93880065A552 /* NetworkManager.swift in Sources */,
+				4553DE3E2B4D357000282403 /* Socket.swift in Sources */,
 				453E56F52B4C93630065A552 /* Endpoint.swift in Sources */,
 				4553DE382B4D110200282403 /* DetailView.swift in Sources */,
 				453E56F82B4C937D0065A552 /* NetworkError.swift in Sources */,
@@ -535,6 +555,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4553DE392B4D32CD00282403 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4553DE3A2B4D32CD00282403 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4553DE392B4D32CD00282403 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 453E56C52B4C83FF0065A552 /* Project object */;
 }

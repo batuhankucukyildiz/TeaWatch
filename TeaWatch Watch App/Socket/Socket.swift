@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import SocketIO
+
+
+
+class Socket {
+    
+}
