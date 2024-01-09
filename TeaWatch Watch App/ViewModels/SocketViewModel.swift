@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 class SocketViewModel: ObservableObject {
     @Published var initialCountdownFloorOne: Double = 0
     @Published var initialCountdownFloorTwo: Double = 0
@@ -17,9 +15,8 @@ class SocketViewModel: ObservableObject {
     init() {
         socket.socketFunc { result in
             switch result {
-    
             case .success(let data):
-                print(data)
+                self.initialCountdownFloorTwo = data
             case .failure(let error):
                 print(error)
             }

@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct DetailView: View {
-    @State private var remainingTime = 1200 // 20 dakika = 1200 saniye
+    @State private var remainingTime = 8400 // 20 dakika = 1200 saniye
     @State private var circularBarTime: CGFloat = 0.5
+    @StateObject var socket = SocketViewModel()
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    let socket = SocketViewModel()
     var body: some View {
         ZStack {
             Text(formatTime(remainingTime)).fontWeight(.bold)
@@ -33,11 +34,14 @@ struct DetailView: View {
         }
     }
 
-    private func formatTime(_ seconds: Int) -> String {
-        let minutes = seconds / 60
-        let seconds = seconds % 60
-        return String(format: "%02d:%02d", minutes, seconds)
+    private func formatTime(_ totalSeconds: Int) -> String {
+        let minutes = totalSeconds / 60
+        let seconds = totalSeconds % 60
+        let hours = minutes / 60
+        let remainingMinutes = minutes % 60
+        return String(format: "%02d:%02d:%02d", hours, remainingMinutes, seconds)
     }
+
 }
 
 #Preview {
