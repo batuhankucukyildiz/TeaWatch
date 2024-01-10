@@ -8,5 +8,5 @@
 import Foundation
 
 struct Constants {
-    static let baseUrl: String = "ws://localhost:3000"
+    static let baseUrl: String = "http://caysaati.local:3000"
 }

@@ -9,35 +9,23 @@ import Foundation
 import SocketIO
 
 class SocketViewModel: ObservableObject {
-    @Published var initialCountdownFloorOne: Double = 0
-    @Published var initialCountdownFloorTwo: Double = 0
-    @Published var initialCountdownFloorThree: Double = 0
+    @Published var initialCountdownFloor: Double = 0
     var socket = Socket()
 
-    init() {
-     
-        socketBegin()
-    }
-    
-    func socketBegin() {
-        // Refactor
-        socket.receiveMessage { result in
+    func socketBegin(socketUpdateId: String) {
+        socket.receiveMessage(socketUpdateId: socketUpdateId) { result in
             switch result {
-                
             case .success(let data):
-                self.initialCountdownFloorTwo = data
+                self.initialCountdownFloor = data
             case .failure(let error):
                 print(error)
             }
         }
-
     }
 
-    
     func socketDisconnect() {
-       
+        socket.socketDisconnect()
     }
-    
 }
 
 

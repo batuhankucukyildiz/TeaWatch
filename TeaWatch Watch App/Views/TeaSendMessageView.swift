@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-import SwiftUI
-import WatchConnectivity
-
 struct TeaSendMessageView: View {
     var id: String
+    var socketUpdateId: String
     var vmService = TeaSendMessageViewModel(service: TeaSendMessageService())
     @State private var isDetailViewActive = false
 
@@ -30,7 +28,7 @@ struct TeaSendMessageView: View {
                             self.isDetailViewActive = true
                         }
                         .padding(.bottom)
-                        .background(NavigationLink("", destination: DetailView(), isActive: $isDetailViewActive).hidden())
+                        .background(NavigationLink("", destination: DetailView(socketUpdateId: socketUpdateId), isActive: $isDetailViewActive).hidden())
 
                     CustomButton(title: "Finish", color: .red) {
                         vmService.teaFinish("reset\(id)")
@@ -44,5 +42,5 @@ struct TeaSendMessageView: View {
 
 
 #Preview {
-    TeaSendMessageView(id: "")
+    TeaSendMessageView(id: "", socketUpdateId: "")
 }

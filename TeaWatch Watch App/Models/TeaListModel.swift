@@ -26,19 +26,19 @@ struct TeaListModel: Hashable {
             imageName: "1.lane",
             text: "Floor One",
             imageColor: .yellow,
-            destination: AnyView(TeaSendMessageView(id: "FloorOne"))
+            destination: AnyView(TeaSendMessageView(id: "FloorThree", socketUpdateId: "updateCountdownFloorThree"))
         ),
         TeaListModel(
             imageName: "2.lane",
             text: "Floor Two",
             imageColor: .yellow,
-            destination: AnyView(TeaSendMessageView(id: "FloorTwo"))
+            destination: AnyView(TeaSendMessageView(id: "FloorTwo", socketUpdateId: "updateCountdownFloorTwo"))
         ),
         TeaListModel(
             imageName: "3.lane",
             text: "FloorThree",
             imageColor: .yellow,
-            destination: AnyView(TeaSendMessageView(id: "FloorThree"))
+            destination: AnyView(TeaSendMessageView(id: "FloorOne", socketUpdateId: "updateCountdownFloorOne"))
         ),
         
     ]

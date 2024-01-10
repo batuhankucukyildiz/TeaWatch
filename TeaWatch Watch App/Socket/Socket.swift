@@ -11,14 +11,18 @@ import SocketIO
 class Socket {
     let manager: SocketManager = SocketManager(socketURL: URL(string: Constants.baseUrl)!, config: [.log(false), .compress])
     let socket: SocketIOClient
-    
     init() {
         self.socket = manager.defaultSocket
         socket.connect()
     }
-    // Refactor
-    func receiveMessage(completion: @escaping (Result<Double, Error>) -> Void) {
-        socket.on("connectUser") { (data, ack) in
+    
+    /**
+        func receiveMessage(socketUpdateId: String, completion: @escaping (Result<Double, Error>) -> Void)
+                - parameter socketUpdateId: Type String, The socket id we want to connect
+                - returns: Completion success or failure  /  Data Type -> Double, Error Type -> Error
+     */
+    func receiveMessage(socketUpdateId: String, completion: @escaping (Result<Double, Error>) -> Void) {
+        socket.on(socketUpdateId) { (data, ack) in
             if let data = data[0] as? Double {
                 completion(.success(data))
             } else {
@@ -27,11 +31,8 @@ class Socket {
             }
         }
     }
-
     
-    // add disconnect method
     func socketDisconnect() {
         socket.disconnect()
     }
-
 }

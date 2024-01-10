@@ -11,15 +11,16 @@ struct DetailView: View {
 
     @State private var remainingTime = 8400
     @State private var circularBarTime: CGFloat = 0.5
-    @State private var countdownFloorTwo: Double = 0 // Yeni eklenen @State özelliği
+    @State private var countdownFloorTwo: Double = 0
     @StateObject var viewModel: SocketViewModel = SocketViewModel()
-
+    var socketUpdateId: String
+    
     var body: some View {
         ZStack {
             VStack {
-                Text("Countdown: \(Int(viewModel.initialCountdownFloorTwo))")
+                Text("Countdown: \(Int(viewModel.initialCountdownFloor))")
                 CustomButton(title: "tıkla", color: .green) {
-                    viewModel.socketBegin()
+                    viewModel.socketBegin(socketUpdateId: socketUpdateId)
                 }
             }
           
@@ -35,28 +36,16 @@ struct DetailView: View {
 //                }
         }
         .padding()
-        .onChange(of: viewModel.initialCountdownFloorTwo) {_, newValue in
-            self.remainingTime = Int(newValue)
+        .onAppear {
+            viewModel.socketBegin(socketUpdateId: socketUpdateId)
         }
-//        .onDisappear {
-//            viewModel.socketDisconnect()
-//            //print("k")
-//        }
-
-//        .onReceive(socket.$initialCountdownFloorTwo) { newValue in
-//            // Yeni değeri countdownFloorTwo özelliğine atayarak izlemeyi tetikle
-//            self.countdownFloorTwo = newValue
-//        }
+        //MARK: Ondissappear socket disconnect
+        .onDisappear {
+            viewModel.socketDisconnect()
+        }
     }
 }
 
-
-//socket.onCountdownUpdate = { [weak self] data in
-//    DispatchQueue.main.async {
-//        self?.initialCountdownFloorTwo = data
-//        print("Data is --------------------------- \(data)")
-//    }
-//}
 #Preview {
-    DetailView()
+    DetailView(socketUpdateId: "")
 }
