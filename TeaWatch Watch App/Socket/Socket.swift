@@ -16,9 +16,9 @@ final class Socket {
         self.socket = manager.defaultSocket
     }
     /**
-        func receiveMessage(socketUpdateId: String, completion: @escaping (Result<Double, Error>) -> Void)
-                - parameter socketUpdateId: Type String, The socket id we want to connect
-                - returns: Completion success or failure  /  Data Type -> Double, Error Type -> Error
+     func receiveMessage(socketUpdateId: String, completion: @escaping (Result<Double, Error>) -> Void)
+     - parameter socketUpdateId: Type String, The socket id we want to connect
+     - returns: Completion success or failure  /  Data Type -> Double, Error Type -> Error
      */
     func receiveMessage(socketUpdateId: String, completion: @escaping (Result<Double, Error>) -> Void) {
         socket.on(socketUpdateId) { (data, ack) in
@@ -31,10 +31,11 @@ final class Socket {
         }
     }
     
+    // initiates a socket connection
     func socketConnect() {
         socket.connect()
     }
-    
+    // terminates the connection to the connected socket
     func socketDisconnect() {
         socket.disconnect()
     }

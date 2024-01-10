@@ -7,7 +7,11 @@
 
 import Foundation
 
-
+/**
+ func formatTime(_ totalSeconds: Int) -> String
+ - parameter totalSeconds: The total number of seconds to be formatted.
+ - returns: A formatted time string in the format "HH:MM:SS".
+ */
 func formatTime(_ totalSeconds: Int) -> String {
     let minutes = totalSeconds / 60
     let seconds = totalSeconds % 60

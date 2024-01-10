@@ -53,21 +53,20 @@ extension Endpoint: EndpointProtocol {
     }
     
     func request() -> URLRequest {
-           guard var components = URLComponents(string: baseUrl) else {
-               fatalError("Invalid URL")
-           }
-           components.path = path
-
-           var request = URLRequest(url: components.url!)
-           request.httpMethod = httpMethod.rawValue
-
-           if case let .sendFloorData(id) = self {
-               let encoder = JSONEncoder()
-               encoder.keyEncodingStrategy = .convertToSnakeCase
-               request.httpBody = try? encoder.encode(["key1": id])
-               request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-           }
-
-           return request
-       }
+        guard var components = URLComponents(string: baseUrl) else {
+            fatalError("Invalid URL")
+        }
+        components.path = path
+        
+        var request = URLRequest(url: components.url!)
+        request.httpMethod = httpMethod.rawValue
+        
+        if case let .sendFloorData(id) = self {
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            request.httpBody = try? encoder.encode(["key1": id])
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+        return request
+    }
 }

@@ -274,6 +274,7 @@
 			mainGroup = 453E56C42B4C83FF0065A552;
 			packageReferences = (
 				4553DE392B4D32CD00282403 /* XCRemoteSwiftPackageReference "socket" */,
+				4553DE4C2B4EA02000282403 /* XCRemoteSwiftPackageReference "SwiftUISnackbar" */,
 			);
 			productRefGroup = 453E56CC2B4C83FF0065A552 /* Products */;
 			projectDirPath = "";
@@ -590,6 +591,14 @@
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
 			requirement = {
 				branch = master;
+				kind = branch;
+			};
+		};
+		4553DE4C2B4EA02000282403 /* XCRemoteSwiftPackageReference "SwiftUISnackbar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zaniluca/SwiftUISnackbar";
+			requirement = {
+				branch = main;
 				kind = branch;
 			};
 		};

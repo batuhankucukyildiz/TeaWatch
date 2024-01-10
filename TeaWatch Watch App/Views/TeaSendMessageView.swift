@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct TeaSendMessageView: View {
     var id: String
     var socketUpdateId: String

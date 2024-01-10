@@ -9,8 +9,9 @@ import Foundation
 
 
 class TeaSendMessageViewModel: ObservableObject {
+    @Published var teaResponseData: String =  ""
+    // Reference to the service protocol
     let service: TeaSendMessageServiceProtocol?
-    
     init(service: TeaSendMessageServiceProtocol?) {
         self.service = service
     }
@@ -19,7 +20,8 @@ class TeaSendMessageViewModel: ObservableObject {
         service?.teaSendMessage(id: id, completion: { result in
             switch result {
             case .success(let data):
-                print(data)
+                self.teaResponseData = data.resultData
+                //print(data)
             case .failure(let error):
                 print(error)
             }

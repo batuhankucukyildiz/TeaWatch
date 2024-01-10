@@ -8,7 +8,6 @@
 import Foundation
 
 final class NetworkManager {
-    
     private init() {}
     static let shared: NetworkManager = NetworkManager() // Singleton Pattern
     let jsonDecoder = JSONDecoder()
@@ -32,9 +31,9 @@ final class NetworkManager {
                 let handleResponse = self.handleNetworkRequest(response: response)
                 switch handleResponse {
                 case .success(let callbackResponse):
-                #if DEBUG
-                print("\(callbackResponse)")
-                #endif
+                    #if DEBUG
+                    print("\(callbackResponse)")
+                    #endif
                 case .failure(let error):
                     completion(.failure(error))
                 }
@@ -48,9 +47,9 @@ final class NetworkManager {
                     }
                 }
                 catch let error {
-                #if DEBUG
-                print(" Error \(error)")
-                #endif
+                    #if DEBUG
+                    print(" Error \(error)")
+                    #endif
                     completion(.failure(error))
                 }
             }
