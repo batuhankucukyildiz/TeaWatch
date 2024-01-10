@@ -29,6 +29,7 @@
 		4553DE412B4D361A00282403 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE402B4D361A00282403 /* Constants.swift */; };
 		4553DE432B4D43A400282403 /* SocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE422B4D43A400282403 /* SocketViewModel.swift */; };
 		4553DE472B4D63AA00282403 /* FormatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE462B4D63AA00282403 /* FormatTime.swift */; };
+		4553DE4B2B4E8FF500282403 /* SocketServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553DE4A2B4E8FF500282403 /* SocketServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		4553DE422B4D43A400282403 /* SocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketViewModel.swift; sourceTree = "<group>"; };
 		4553DE462B4D63AA00282403 /* FormatTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTime.swift; sourceTree = "<group>"; };
 		4553DE482B4DACE600282403 /* TeaWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TeaWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		4553DE4A2B4E8FF500282403 /* SocketServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				453E56FE2B4C95920065A552 /* TeaSendMessageService.swift */,
+				4553DE4A2B4E8FF500282403 /* SocketServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				453E56FA2B4C93880065A552 /* NetworkManager.swift in Sources */,
 				4553DE3E2B4D357000282403 /* Socket.swift in Sources */,
 				453E56F52B4C93630065A552 /* Endpoint.swift in Sources */,
+				4553DE4B2B4E8FF500282403 /* SocketServices.swift in Sources */,
 				4553DE382B4D110200282403 /* DetailView.swift in Sources */,
 				453E56F82B4C937D0065A552 /* NetworkError.swift in Sources */,
 				453E56D92B4C83FF0065A552 /* ContentView.swift in Sources */,

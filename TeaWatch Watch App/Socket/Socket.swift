@@ -8,14 +8,13 @@
 import Foundation
 import SocketIO
 
-class Socket {
+final class Socket {
+    static let sharedSocket = Socket() // Singleton Pattern
     let manager: SocketManager = SocketManager(socketURL: URL(string: Constants.baseUrl)!, config: [.log(false), .compress])
     let socket: SocketIOClient
-    init() {
+    private init() {
         self.socket = manager.defaultSocket
-        socket.connect()
     }
-    
     /**
         func receiveMessage(socketUpdateId: String, completion: @escaping (Result<Double, Error>) -> Void)
                 - parameter socketUpdateId: Type String, The socket id we want to connect
@@ -30,6 +29,10 @@ class Socket {
                 completion(.failure(error))
             }
         }
+    }
+    
+    func socketConnect() {
+        socket.connect()
     }
     
     func socketDisconnect() {

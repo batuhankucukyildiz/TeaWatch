@@ -10,10 +10,13 @@ import SocketIO
 
 class SocketViewModel: ObservableObject {
     @Published var initialCountdownFloor: Double = 0
-    var socket = Socket()
+    let socketService: SocketServicesProtocol?
+    init(socketService: SocketServicesProtocol?) {
+        self.socketService = socketService
+    }
 
     func socketBegin(socketUpdateId: String) {
-        socket.receiveMessage(socketUpdateId: socketUpdateId) { result in
+        socketService?.receiveMessage(socketUpdateId: socketUpdateId) { result in
             switch result {
             case .success(let data):
                 self.initialCountdownFloor = data
@@ -22,9 +25,11 @@ class SocketViewModel: ObservableObject {
             }
         }
     }
-
+    func socketConnect() {
+        socketService?.socketConnect()
+    }
     func socketDisconnect() {
-        socket.socketDisconnect()
+        socketService?.socketDisconnect()
     }
 }
 
